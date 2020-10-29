@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
     backdrop_path: DataTypes.STRING,
     budget: DataTypes.INTEGER,
     homepage: DataTypes.STRING,
-    id: DataTypes.INTEGER,
+    movieid: DataTypes.INTEGER,
     imdb_id: DataTypes.STRING,
     original_language: DataTypes.STRING,
     original_title: DataTypes.STRING,

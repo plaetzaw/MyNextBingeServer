@@ -17,7 +17,7 @@ module.exports = {
       homepage: {
         type: Sequelize.STRING
       },
-      id: {
+      tvid: {
         type: Sequelize.INTEGER
       },
       in_production: {

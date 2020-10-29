@@ -20,7 +20,7 @@ module.exports = {
       homepage: {
         type: Sequelize.STRING
       },
-      id: {
+      movieid: {
         type: Sequelize.INTEGER
       },
       imdb_id: {

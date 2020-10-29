@@ -17,7 +17,7 @@ module.exports = {
       deathday: {
         type: Sequelize.STRING
       },
-      id: {
+      personid: {
         type: Sequelize.INTEGER
       },
       name: {

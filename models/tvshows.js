@@ -4,7 +4,7 @@ module.exports = (sequelize, DataTypes) => {
     backdrop_path: DataTypes.STRING,
     first_air_date: DataTypes.STRING,
     homepage: DataTypes.STRING,
-    id: DataTypes.INTEGER,
+    tvid: DataTypes.INTEGER,
     in_production: DataTypes.BOOLEAN,
     last_air_date: DataTypes.STRING,
     name: DataTypes.STRING,
