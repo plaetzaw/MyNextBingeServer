@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     homepage: DataTypes.STRING
   }, {});
   persons.associate = function(models) {
-    // associations can be defined here
+    models.persons.belongsTo(models.users, {
+      as: "users",
+      foreignKey: "id",
+    })
   };
   return persons;
 };

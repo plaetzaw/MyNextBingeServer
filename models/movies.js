@@ -23,7 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     vote_count: DataTypes.INTEGER
   }, {});
   movies.associate = function(models) {
-    // associations can be defined here
+      models.games.belongsTo(models.users, {
+        as: "users",
+        foreignKey: "id",
+      });
   };
   return movies;
 };
