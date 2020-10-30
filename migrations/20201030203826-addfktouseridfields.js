@@ -2,22 +2,42 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
-    */
+    return Promise.all([
+      queryInterface.addConstraint("movies", {
+        fields: ["userid"],
+        type: "FOREIGN KEY",
+        name: "adding_a_foreignkey_to_movies",
+        references: {
+          table: "users",
+          field: "id"
+        }
+      }),
+    queryInterface.addConstraint("tvshows", {
+      fields: ["userid"],
+      type: "FOREIGN KEY",
+      name: "adding_a_foreignkey_to_tvshows",
+      references: {
+        table: "users",
+        field: "id"
+      }
+    }),
+    queryInterface.addConstraint("persons", {
+      fields: ["userid"],
+      type: "FOREIGN KEY",
+      name: "adding_a_foreignkey_to_persons",
+      references: {
+        table: "users",
+        field: "id"
+      }
+    })
+    ])
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
+    return Promise.all([
+      queryInterface.removeConstraint("movies", "adding_a_foreignkey_to_movies"),
+      queryInterface.removeConstraint("tvshows", "adding_a_foreignkey_to_tvshows"),
+      queryInterface.removeConstraint("persons", "adding_a_foreignkey_to_persons"),
+    ])
   }
 };
