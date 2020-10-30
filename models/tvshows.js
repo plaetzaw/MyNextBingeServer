@@ -18,7 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     status: DataTypes.STRING,
     type: DataTypes.STRING,
     vote_average: DataTypes.FLOAT,
-    vote_count: DataTypes.INTEGER
+    vote_count: DataTypes.INTEGER,
+    userid: DataTypes.INTEGER,
   }, {});
   tvshows.associate = function(models) {
     models.tvshows.belongsTo(models.users, {

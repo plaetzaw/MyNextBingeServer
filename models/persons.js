@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     profile_path: DataTypes.STRING,
     adult: DataTypes.BOOLEAN,
     imdb_id: DataTypes.STRING,
-    homepage: DataTypes.STRING
+    homepage: DataTypes.STRING,
+    userid: DataTypes.INTEGER,
   }, {});
   persons.associate = function(models) {
     models.persons.belongsTo(models.users, {

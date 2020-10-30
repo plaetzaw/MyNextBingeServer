@@ -7,18 +7,18 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING
   }, {});
   users.associate = function(models) {
-    models.users.hasMany(models.movies, {
-      as: "users",
-      foreignKey: "id"
-    }),
-    models.users.hasMany(models.tvshows, {
-      as: "users",
-      foreignKey: "id"
-    }),
-    models.users.hasMany(models.persons, {
+   users.hasMany(models.movies, {
       as: "users",
       foreignKey: "id"
     })
+    // models.users.hasMany(models.tvshows, {
+    //   as: "users",
+    //   foreignKey: "id"
+    // }),
+    // models.users.hasMany(models.persons, {
+    //   as: "users",
+    //   foreignKey: "id"
+    // })
   };
   return users;
 };

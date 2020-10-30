@@ -20,13 +20,14 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     video: DataTypes.BOOLEAN,
     vote_average: DataTypes.FLOAT,
-    vote_count: DataTypes.INTEGER
+    vote_count: DataTypes.INTEGER,
+    userid: DataTypes.INTEGER,
   }, {});
   movies.associate = function(models) {
-      models.games.belongsTo(models.users, {
+      models.movies.belongsTo(models.users, {
         as: "users",
         foreignKey: "id",
-      });
+      })
   };
   return movies;
 };
