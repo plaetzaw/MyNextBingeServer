@@ -40,3 +40,5 @@ router.post("/createMovie", async (req, res) => {
         res.status(500).json({ message: "An error has occured", error: e})
     }
 })
+
+module.exports = router;

@@ -19,6 +19,8 @@ app.use(require("./routes/login"))
 app.use(require("./routes/register"))
 app.use(require("./routes/search"))
 app.use(require("./routes/trending"))
+app.use(require("./routes/createEntry"))
+
 
  
 app.listen(PORT, () => {

@@ -12,6 +12,8 @@ router.post("/register", (req, res) => {
   let lastName = req.body.lastName;
   let email = req.body.email;
   let password = req.body.password;
+
+  console.log(email)
   
         db.users
           .findOne({
@@ -19,9 +21,9 @@ router.post("/register", (req, res) => {
               email: email,
             },
           })
-          .then((email) => {
+          .then((user) => {
             console.log("looking for email...");
-            if (email) {
+            if (user) {
               console.log("email already exists");
               res.status(500).json({ message: "email already exists- please use a different email address" });
             } else {
@@ -33,6 +35,8 @@ router.post("/register", (req, res) => {
                   email: email,
                   password: hash,
                 });
+
+                console.log(email)
 
                 user
                   .save()
