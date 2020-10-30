@@ -5,14 +5,11 @@ const bodyParser = require("body-parser");
 const axios = require("axios");
 const CircularJSON = require("circular-json");
 
-
-
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post("/searchMovies", (req, res) => {
     let title = req.body.title
     let API_KEY = process.env.API_KEY
-
     let apiURL = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${title}&page=1`
 
     axios.get(apiURL)
@@ -25,6 +22,7 @@ router.post("/searchMovies", (req, res) => {
 
 router.post("/searchTV", (req, res) => {
     let title = req.body.title
+    let API_KEY = process.env.API_KEY
     let apiURL = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${title}&page=1`
 
     axios.get(apiURL)
@@ -37,6 +35,7 @@ router.post("/searchTV", (req, res) => {
 
 router.post("/searchPeople", (req, res) => {
     let person = req.body.person
+    let API_KEY = process.env.API_KEY
     let apiURL = `https://api.themoviedb.org/3/search/person?api_key=${API_KEY}&query=${person}&page=1`
 
     axios.get(apiURL)

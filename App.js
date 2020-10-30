@@ -18,6 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(require("./routes/login"))
 app.use(require("./routes/register"))
 app.use(require("./routes/search"))
+app.use(require("./routes/trending"))
 
  
 app.listen(PORT, () => {
