@@ -8,17 +8,17 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   users.associate = function(models) {
    users.hasMany(models.movies, {
-      as: "users",
+      as: "movies",
+      foreignKey: "id"
+    }),
+    models.users.hasMany(models.tvshows, {
+      as: "tvshows",
+      foreignKey: "id"
+    }),
+    models.users.hasMany(models.persons, {
+      as: "people",
       foreignKey: "id"
     })
-    // models.users.hasMany(models.tvshows, {
-    //   as: "users",
-    //   foreignKey: "id"
-    // }),
-    // models.users.hasMany(models.persons, {
-    //   as: "users",
-    //   foreignKey: "id"
-    // })
   };
   return users;
 };
