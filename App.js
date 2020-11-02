@@ -12,14 +12,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 //JWT
-// const { authUser } = require("./utility/auth");
+const { authUser } = require("./utility/auth");
 
 //Routes
-app.use(require("./routes/login"))
+app.use(require("./routes/login", authUser))
 app.use(require("./routes/register"))
 app.use(require("./routes/search"))
 app.use(require("./routes/trending"))
-app.use(require("./routes/createEntry"))
+app.use(require("./routes/createEntry", authUser))
 
 
  
