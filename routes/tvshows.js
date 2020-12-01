@@ -34,7 +34,7 @@ router.post("/topratedShows", async (req, res) => {
 
 router.post("/airingtodayShows", async (req, res) => {
     let API_KEY = process.env.API_KEY
-    let airingtodayURL = `https://api.themoviedb.org/3/tv/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    let airingtodayURL = `https://api.themoviedb.org/3/tv/airing_today?api_key=${API_KEY}&language=en-US&page=1`
 
     try {
         let airingToday = await axios.get(airingtodayURL);
