@@ -3,11 +3,12 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require("body-parser");
 const axios = require("axios");
+const API_KEY = process.env.API_KEY
+
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
 router.post("/popularMovies", async (req, res) => {
-    let API_KEY = process.env.API_KEY
     let popularURL = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
 
     try {
@@ -20,7 +21,6 @@ router.post("/popularMovies", async (req, res) => {
 })
 
 router.post("/nowplayingMovies", async (req, res) => {
-    let API_KEY = process.env.API_KEY
     let nowplayingURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`
 
     try {
@@ -33,7 +33,6 @@ router.post("/nowplayingMovies", async (req, res) => {
 })
 
 router.post("/upcomingMovies", async (req, res) => {
-    let API_KEY = process.env.API_KEY
     let upcomingURL = `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
 
     try {
@@ -46,7 +45,6 @@ router.post("/upcomingMovies", async (req, res) => {
 })
 
 router.post("/topratedMovies", async (req, res) => {
-    let API_KEY = process.env.API_KEY
     let topratedURL = `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
 
     try {
@@ -54,6 +52,19 @@ router.post("/topratedMovies", async (req, res) => {
         res.status(200).send(topRated.data);
     }
     catch (e) {
+        res.status(500).json({ message: "An error has occured", error: e})
+    }
+})
+
+router.post("/fullmovieInfo", async (req, res) => {
+    let movie_id = req.body.id
+    console.log(movie_id)
+    let fullURL = `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
+
+    try {
+        let fullMovie = await axios.get(fullURL)
+        res.status(200).send(fullMovie.data)
+    }  catch (e) {
         res.status(500).json({ message: "An error has occured", error: e})
     }
 })
