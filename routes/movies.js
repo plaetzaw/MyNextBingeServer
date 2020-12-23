@@ -108,5 +108,17 @@ router.post("/fullmovieVideos", async (req, res) => {
     }
 })
 
+router.post("/fullmovieWatchProviders", async (req, res) => {
+    let movie_id = req.body.id
+    console.log(movie_id)
+    let fullURL = `https://api.themoviedb.org/3/movie/${movie_id}/watch/providers?api_key=${API_KEY}&language=en-US`
+
+    try {
+        let fullMovie = await axios.get(fullURL)
+        res.status(200).send(fullMovie.data)
+    }  catch (e) {
+        res.status(500).json({ message: "An error has occured", error: e})
+    }
+})
 
 module.exports = router;
